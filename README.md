@@ -12,7 +12,7 @@ Page Pulse is a small web tool that audits a public URL and returns a clean JSON
 
 ## Run locally
 
-Prerequisites: Node.js 20.19 or newer. Node.js 22 LTS is recommended for the Worker preview tooling.
+Prerequisites: Node.js 22 or newer.
 
 ```bash
 npm install
