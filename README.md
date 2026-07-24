@@ -6,7 +6,7 @@ Page Pulse is a small web tool that audits a public URL and returns a clean JSON
 
 ## Links
 
-- Live application: added after production deployment
+- Live application: https://page-pulse-audit.ai-coding-challenge.chatgpt.site
 - API endpoint: `POST /api/audit`
 - Loom walkthrough: add the recorded link to `submission/SUBMISSION.md`
 
@@ -28,6 +28,12 @@ npm run check
 ```
 
 That command type-checks the project, runs the test suite, and creates a production build.
+
+To create the bundled Worker artifact used by the production host:
+
+```bash
+npm run build:sites
+```
 
 ## API contract
 

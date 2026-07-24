@@ -2,8 +2,8 @@
 
 ## Task A: Page Pulse
 
-- Live application: added after deployment
-- Public GitHub repository: added after publishing
+- Live application: https://page-pulse-audit.ai-coding-challenge.chatgpt.site
+- Public GitHub repository: https://github.com/Johnkothapalli/page-pulse-digital-heroes
 - API endpoint: `POST /api/audit`
 
 The frontend, backend audit endpoint, input validation, timeout behavior, non-HTML handling, private-network protection, and required footer credit are included in the repository.

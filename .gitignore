@@ -1,5 +1,7 @@
 .next/
 .open-next/
+.sites-bundle/
+.sites-stage*/
 .wrangler/
 node_modules/
 coverage/
