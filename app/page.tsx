@@ -8,6 +8,70 @@ function PulseMark() {
   );
 }
 
+function ArrowUpRight() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 20 20">
+      <path d="M6 14 14 6M7 6h7v7" />
+    </svg>
+  );
+}
+
+function SignalConsole() {
+  return (
+    <aside className="signal-console" aria-label="Page Pulse signal preview">
+      <div className="signal-console__top">
+        <span>Request trace</span>
+        <span className="ready-pill">
+          <i aria-hidden="true" />
+          Ready
+        </span>
+      </div>
+
+      <div className="trace-url" aria-hidden="true">
+        <span>GET</span>
+        <p>https://your-site.com</p>
+        <i />
+      </div>
+
+      <div className="pulse-stage" aria-hidden="true">
+        <div className="orbit orbit--outer" />
+        <div className="orbit orbit--inner" />
+        <div className="pulse-core">
+          <PulseMark />
+          <span />
+        </div>
+        <div className="signal-chip signal-chip--status">
+          <i />
+          HTTP status
+        </div>
+        <div className="signal-chip signal-chip--meta">
+          <i />
+          Metadata
+        </div>
+        <div className="signal-chip signal-chip--content">
+          <i />
+          Page structure
+        </div>
+      </div>
+
+      <div className="signal-console__footer">
+        <div>
+          <span>01</span>
+          <p>Response</p>
+        </div>
+        <div>
+          <span>02</span>
+          <p>Metadata</p>
+        </div>
+        <div>
+          <span>03</span>
+          <p>Content</p>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
 export default function Home() {
   return (
     <div className="site-shell">
@@ -18,9 +82,21 @@ export default function Home() {
           </span>
           <span>Page Pulse</span>
         </a>
-        <div className="header-status">
-          <i aria-hidden="true" />
-          Live audit service
+
+        <div className="header-actions">
+          <span className="header-status">
+            <i aria-hidden="true" />
+            Audit service online
+          </span>
+          <a
+            className="source-link"
+            href="https://github.com/Johnkothapalli/page-pulse-digital-heroes"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View source
+            <ArrowUpRight />
+          </a>
         </div>
       </header>
 
@@ -30,6 +106,7 @@ export default function Home() {
             <p className="eyebrow">
               <span>Fast page intelligence</span>
               <i aria-hidden="true" />
+              <b>No sign-up</b>
             </p>
             <h1>
               Read the page
@@ -37,61 +114,69 @@ export default function Home() {
               <em>behind</em> the page.
             </h1>
             <p className="hero__intro">
-              One URL. Eight useful signals. No account, no dashboard theatre—
-              just a clean snapshot of what your page returns.
+              See the response, structure, and metadata your server actually
+              sends&mdash;before guessing at a score.
             </p>
+            <div className="hero__facts" aria-label="Product facts">
+              <span>
+                <b>08</b> useful signals
+              </span>
+              <span>
+                <b>00</b> data stored
+              </span>
+              <span>
+                <b>08s</b> fetch guardrail
+              </span>
+            </div>
           </div>
 
-          <aside className="hero__aside" aria-label="Audit coverage">
-            <span className="aside-number">08</span>
-            <p>signals checked</p>
-            <ul>
-              <li>
-                <span>
-                  <i>01</i> Server
-                </span>
-                <b>status + speed</b>
-              </li>
-              <li>
-                <span>
-                  <i>02</i> Search
-                </span>
-                <b>title + description</b>
-              </li>
-              <li>
-                <span>
-                  <i>03</i> Structure
-                </span>
-                <b>H1 + words + images</b>
-              </li>
-            </ul>
-          </aside>
+          <SignalConsole />
         </section>
 
         <AuditForm />
 
-        <section className="principles" aria-label="Product principles">
-          <article>
-            <span>01</span>
-            <div>
-              <h2>Small by design</h2>
-              <p>The report answers a focused question instead of burying it.</p>
-            </div>
-          </article>
-          <article>
-            <span>02</span>
-            <div>
-              <h2>Defensive by default</h2>
-              <p>Timeouts, content limits, and private targets are handled.</p>
-            </div>
-          </article>
-          <article>
-            <span>03</span>
-            <div>
-              <h2>Honest about scope</h2>
-              <p>A fast server snapshot—not a substitute for field data.</p>
-            </div>
-          </article>
+        <section className="principles" aria-labelledby="principles-title">
+          <div className="principles__intro">
+            <span className="section-kicker">Product thinking</span>
+            <h2 id="principles-title">
+              Useful signals,
+              <br />
+              clearly framed.
+            </h2>
+          </div>
+
+          <div className="principles__list">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Facts before scores</h3>
+                <p>
+                  Exact measurements stay primary, so you can make your own
+                  call.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Defensive by default</h3>
+                <p>
+                  Timeouts, response limits, redirects, and private targets are
+                  handled.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Honest about scope</h3>
+                <p>
+                  A focused server snapshot, not a replacement for field
+                  performance data.
+                </p>
+              </div>
+            </article>
+          </div>
         </section>
       </main>
 
@@ -102,7 +187,7 @@ export default function Home() {
             Digital Heroes Training Task
           </a>
         </p>
-        <span>Page Pulse / 2026</span>
+        <span>Designed &amp; developed by John Kothapalli / 2026</span>
       </footer>
     </div>
   );

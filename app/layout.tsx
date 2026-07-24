@@ -4,14 +4,14 @@ import type { ReactNode } from "react";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "Page Pulse — Read the page behind the page",
+  title: "Page Pulse — Fast page intelligence",
   description:
-    "Audit a public URL for status, response time, page metadata, headings, image alt text, and readable word count.",
+    "Inspect any public page for status, response time, metadata, headings, image alt-text gaps, and readable word count.",
 };
 
 export const viewport: Viewport = {
   colorScheme: "light",
-  themeColor: "#f2eee5",
+  themeColor: "#f4f0e7",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

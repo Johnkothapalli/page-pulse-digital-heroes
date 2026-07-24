@@ -33,7 +33,7 @@ Briefly show `tests/fetch-page.test.ts`, especially redirect revalidation and th
 
 ## 2:25–2:50 — Explain one visual choice
 
-“The interface says ‘snapshot’ rather than ‘score.’ Green and coral are only supporting signals; the exact numbers stay primary. I also used no remote font or image assets, which keeps the first load light.”
+“I treated the interface like a small diagnostic instrument rather than a generic dashboard. The result says ‘snapshot’ instead of inventing an SEO score. Its six baseline checks are visible rules, green and coral are only supporting cues, and the exact measurements remain primary. The search preview turns the raw title and description into something immediately understandable.”
 
 ## 2:50–3:00 — Honest self-critique
 
