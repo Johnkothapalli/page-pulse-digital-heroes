@@ -12,7 +12,7 @@ Page Pulse is a small web tool that audits a public URL and returns a clean JSON
 
 ## Run locally
 
-Prerequisites: Node.js 20.9 or newer.
+Prerequisites: Node.js 20.19 or newer. Node.js 22 LTS is recommended for the Worker preview tooling.
 
 ```bash
 npm install
@@ -74,7 +74,7 @@ The API still returns a report when an upstream HTML page responds with an HTTP 
 }
 ```
 
-Handled cases include malformed URLs, unsupported protocols, DNS failures, private-network targets, unsafe redirects, timeouts, oversized pages, broken redirect chains, and non-HTML content.
+Handled cases include malformed URLs, unsupported protocols, unreachable domains, private-network targets, unsafe redirects, timeouts, oversized pages, broken redirect chains, and non-HTML content.
 
 ## Three design decisions
 
@@ -84,7 +84,7 @@ Handled cases include malformed URLs, unsupported protocols, DNS failures, priva
 
 ### 2. Treat URL fetching as a security boundary
 
-A backend that fetches arbitrary user input can become an SSRF proxy. Page Pulse accepts only HTTP(S), rejects credentials and local hostnames, resolves DNS before fetching, blocks private/reserved IP ranges, manually follows at most five redirects, and validates every destination. It also enforces an eight-second timeout and a 1.5 MB decoded-body limit.
+A backend that fetches arbitrary user input can become an SSRF proxy. Page Pulse accepts only HTTP(S), rejects credentials, local hostnames, and literal private/reserved IP ranges, manually follows at most five redirects, and validates every destination. The production Worker also enables strict-public outbound fetching, so DNS-resolved private targets are stopped at the network boundary. The fetcher enforces an eight-second timeout and a 1.5 MB decoded-body limit.
 
 ### 3. Return facts before opinions
 
@@ -115,7 +115,7 @@ Run `npm test`.
 
 ## If I had another day
 
-I would move outbound requests behind an egress proxy that resolves and pins the approved IP for the connection. The current DNS check plus redirect validation is a strong application-level guard, but a network-level policy would close the remaining DNS-rebinding gap. After that, I would add streamed progress and a small cache keyed by normalized URL.
+I would add a portable egress adapter that resolves and pins an approved IP when Page Pulse runs outside its current Worker environment. Production already has a strict-public network policy, but making that protection vendor-independent would preserve the same security boundary on any host. After that, I would add streamed progress and a small cache keyed by normalized URL.
 
 ## AI use
 

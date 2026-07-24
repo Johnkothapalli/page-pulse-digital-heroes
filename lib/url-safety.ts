@@ -1,4 +1,3 @@
-import { lookup } from "node:dns/promises";
 import { isIP } from "node:net";
 
 import { AuditFailure } from "@/lib/audit-failure";
@@ -118,37 +117,11 @@ export async function validatePublicTarget(input: unknown): Promise<URL> {
   const url = parseAuditUrl(input);
   const hostname = url.hostname.replace(/^\[|\]$/g, "");
 
-  if (isIP(hostname)) {
-    if (isUnsafeIpAddress(hostname)) {
-      throw new AuditFailure(
-        "PRIVATE_TARGET",
-        403,
-        "Private and reserved network addresses cannot be audited.",
-      );
-    }
-    return url;
-  }
-
-  let addresses;
-  try {
-    addresses = await lookup(hostname, { all: true, verbatim: true });
-  } catch {
-    throw new AuditFailure(
-      "DNS_ERROR",
-      502,
-      "The domain could not be resolved.",
-      "Check the spelling or try again after its DNS is available.",
-    );
-  }
-
-  if (
-    addresses.length === 0 ||
-    addresses.some(({ address }) => isUnsafeIpAddress(address))
-  ) {
+  if (isIP(hostname) && isUnsafeIpAddress(hostname)) {
     throw new AuditFailure(
       "PRIVATE_TARGET",
       403,
-      "The domain resolves to a private or reserved network.",
+      "Private and reserved network addresses cannot be audited.",
     );
   }
 

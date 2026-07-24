@@ -1,4 +1,6 @@
 .next/
+.open-next/
+.wrangler/
 node_modules/
 coverage/
 artifacts/
@@ -9,3 +11,4 @@ artifacts/
 !.env.example
 .DS_Store
 Thumbs.db
+page-pulse-sites.tgz

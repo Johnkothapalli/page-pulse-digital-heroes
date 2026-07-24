@@ -2,7 +2,11 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import { AuditFailure } from "@/lib/audit-failure";
-import { isUnsafeIpAddress, parseAuditUrl } from "@/lib/url-safety";
+import {
+  isUnsafeIpAddress,
+  parseAuditUrl,
+  validatePublicTarget,
+} from "@/lib/url-safety";
 
 describe("parseAuditUrl", () => {
   it("accepts a complete public HTTPS URL", () => {
@@ -45,5 +49,20 @@ describe("isUnsafeIpAddress", () => {
   it("allows ordinary public IP addresses", () => {
     assert.equal(isUnsafeIpAddress("1.1.1.1"), false);
     assert.equal(isUnsafeIpAddress("2606:4700:4700::1111"), false);
+  });
+});
+
+describe("validatePublicTarget", () => {
+  it("accepts public hostnames without depending on a DNS preflight", async () => {
+    const url = await validatePublicTarget("https://example.com");
+    assert.equal(url.toString(), "https://example.com/");
+  });
+
+  it("rejects literal private addresses before the network request", async () => {
+    await assert.rejects(
+      validatePublicTarget("http://10.0.0.7"),
+      (error: unknown) =>
+        error instanceof AuditFailure && error.code === "PRIVATE_TARGET",
+    );
   });
 });
