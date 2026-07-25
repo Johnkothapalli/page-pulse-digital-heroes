@@ -110,8 +110,8 @@ svg {
   border-radius: 50%;
   box-shadow: 0 0 0 0 rgba(201, 244, 95, 0.3);
   transition:
-    transform 180ms ease,
-    box-shadow 180ms ease;
+    transform 240ms ease,
+    box-shadow 240ms ease;
 }
 
 .brand:hover .brand__mark {
@@ -178,7 +178,7 @@ svg {
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: transform 160ms ease;
+  transition: transform 220ms ease;
 }
 
 .source-link:hover svg,
@@ -194,6 +194,22 @@ svg {
   align-items: center;
   gap: clamp(54px, 7vw, 112px);
   padding: 76px 0 82px;
+}
+
+.hero__copy > * {
+  animation: hero-reveal 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero__copy > :nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.hero__copy > :nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.hero__copy > :nth-child(4) {
+  animation-delay: 240ms;
 }
 
 .eyebrow {
@@ -288,6 +304,7 @@ svg {
   border-radius: 4px;
   box-shadow: var(--shadow);
   color: var(--white);
+  animation: console-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
 }
 
 .signal-console::before {
@@ -300,6 +317,23 @@ svg {
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 32px 32px;
   mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+.signal-console::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 42%,
+    rgba(118, 228, 235, 0.16) 50%,
+    transparent 58%
+  );
+  opacity: 0.34;
+  transform: translateX(-115%);
+  animation: console-sheen 11s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
 .signal-console__top,
@@ -377,6 +411,7 @@ svg {
   background: var(--cyan);
   border-radius: 50%;
   box-shadow: 0 0 11px var(--cyan);
+  animation: signal-glow 3.8s ease-in-out infinite;
 }
 
 .pulse-stage {
@@ -409,7 +444,7 @@ svg {
 .orbit--outer {
   width: 280px;
   height: 280px;
-  animation: rotate 18s linear infinite;
+  animation: rotate 42s linear infinite;
 }
 
 .orbit--outer::before {
@@ -427,7 +462,7 @@ svg {
   width: 178px;
   height: 178px;
   border-style: dashed;
-  animation: rotate-reverse 14s linear infinite;
+  animation: rotate-reverse 34s linear infinite;
 }
 
 .orbit--inner::before {
@@ -456,6 +491,7 @@ svg {
     0 0 0 13px rgba(201, 244, 95, 0.045),
     0 0 48px rgba(118, 228, 235, 0.13);
   transform: translate(-50%, -50%);
+  animation: core-breathe 5.6s ease-in-out infinite;
 }
 
 .pulse-core span {
@@ -467,6 +503,7 @@ svg {
   background: var(--lime);
   border-radius: 50%;
   box-shadow: 0 0 9px var(--lime);
+  animation: signal-glow 3.4s ease-in-out infinite;
 }
 
 .signal-chip {
@@ -482,6 +519,7 @@ svg {
   font-size: 9px;
   font-weight: 700;
   white-space: nowrap;
+  animation: chip-float 7.5s ease-in-out infinite;
 }
 
 .signal-chip i {
@@ -499,6 +537,7 @@ svg {
 .signal-chip--meta {
   top: 73px;
   right: 17px;
+  animation-delay: 1.2s;
 }
 
 .signal-chip--meta i {
@@ -508,6 +547,7 @@ svg {
 .signal-chip--content {
   right: 42px;
   bottom: 31px;
+  animation-delay: 2.3s;
 }
 
 .signal-chip--content i {
@@ -641,8 +681,8 @@ svg {
   border: 1px solid transparent;
   border-radius: 4px;
   transition:
-    box-shadow 160ms ease,
-    border-color 160ms ease;
+    box-shadow 220ms ease,
+    border-color 220ms ease;
 }
 
 .url-control__icon {
@@ -721,12 +761,14 @@ svg {
   text-transform: uppercase;
   cursor: pointer;
   transition:
-    transform 160ms ease,
-    background 160ms ease;
+    transform 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .url-control button:hover:not(:disabled) {
   background: #ddff84;
+  box-shadow: 0 14px 32px rgba(201, 244, 95, 0.22);
   transform: translateY(-1px);
 }
 
@@ -762,7 +804,7 @@ footer a:focus-visible {
   border: 2px solid rgba(12, 36, 49, 0.28);
   border-top-color: var(--ink);
   border-radius: 50%;
-  animation: spin 650ms linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 .sample-links {
@@ -895,14 +937,14 @@ footer a:focus-visible {
 .progress-ring--one {
   width: 150px;
   height: 150px;
-  animation: rotate 2.4s linear infinite;
+  animation: rotate 6.8s linear infinite;
 }
 
 .progress-ring--two {
   width: 106px;
   height: 106px;
   border-style: dashed;
-  animation: rotate-reverse 1.9s linear infinite;
+  animation: rotate-reverse 5.4s linear infinite;
 }
 
 .progress-ring--two::after {
@@ -918,6 +960,7 @@ footer a:focus-visible {
   place-items: center;
   background: var(--ink);
   box-shadow: 0 0 0 9px rgba(12, 36, 49, 0.05);
+  animation: core-breathe 4.8s ease-in-out infinite;
 }
 
 .progress-pulse svg {
@@ -964,7 +1007,7 @@ footer a:focus-visible {
   height: 7px;
   background: var(--paper-deep);
   border-radius: 50%;
-  animation: progress-dot 1.8s ease-in-out infinite;
+  animation: progress-dot 2.8s ease-in-out infinite;
 }
 
 .audit-progress__copy li:nth-child(2) i {
@@ -985,7 +1028,7 @@ footer a:focus-visible {
   background: var(--white);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
-  animation: report-rise 420ms ease both;
+  animation: report-rise 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .report__heading {
@@ -1533,9 +1576,9 @@ footer a {
   font-weight: 850;
   text-decoration: none;
   transition:
-    background 160ms ease,
-    color 160ms ease,
-    transform 160ms ease;
+    background 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
 }
 
 footer a:hover {
@@ -1552,6 +1595,77 @@ footer a:hover {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes console-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes console-sheen {
+  0%,
+  38% {
+    transform: translateX(-115%);
+  }
+  58%,
+  100% {
+    transform: translateX(115%);
+  }
+}
+
+@keyframes core-breathe {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow:
+      0 0 0 9px rgba(201, 244, 95, 0.045),
+      0 0 40px rgba(118, 228, 235, 0.12);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.035);
+    box-shadow:
+      0 0 0 16px rgba(201, 244, 95, 0.07),
+      0 0 62px rgba(118, 228, 235, 0.2);
+  }
+}
+
+@keyframes signal-glow {
+  0%,
+  100% {
+    opacity: 0.68;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes chip-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0);
   }
 }
 
