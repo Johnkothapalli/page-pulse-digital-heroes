@@ -1760,8 +1760,7 @@ footer a:hover {
   }
 
   .header-status {
-    width: 8px;
-    overflow: hidden;
+    display: none;
   }
 
   .header-actions {
@@ -2013,10 +2012,6 @@ footer a:hover {
 @media (max-width: 380px) {
   .brand {
     font-size: 16px;
-  }
-
-  .source-link::before {
-    content: "";
   }
 
   .hero h1 {
