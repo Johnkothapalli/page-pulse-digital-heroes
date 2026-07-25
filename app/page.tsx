@@ -180,14 +180,16 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>
-        <p>
+      <footer className="site-footer">
+        <p className="site-footer__credit">
           Built for{" "}
           <a href="https://digitalheroesco.com" target="_blank" rel="noreferrer">
             Digital Heroes Training Task
           </a>
         </p>
-        <span>Designed &amp; developed by John Kothapalli / 2026</span>
+        <span className="site-footer__signature">
+          Software Development role / John Kothapalli / 2026
+        </span>
       </footer>
     </div>
   );

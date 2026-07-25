@@ -1,4 +1,4 @@
-# Digital Heroes — Software Development (SDE)
+# Digital Heroes - Software Development (SDE)
 
 ## Task A: Page Pulse
 

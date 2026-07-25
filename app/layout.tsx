@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "Page Pulse — Fast page intelligence",
+  title: "Page Pulse - Fast page intelligence",
   description:
     "Inspect any public page for status, response time, metadata, headings, image alt-text gaps, and readable word count.",
 };

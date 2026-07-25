@@ -975,12 +975,17 @@ footer a:focus-visible {
   animation-delay: 0.7s;
 }
 
+.result-region {
+  scroll-margin-top: 24px;
+}
+
 .report {
   margin-top: 24px;
   padding: clamp(28px, 4.5vw, 56px);
   background: var(--white);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+  animation: report-rise 420ms ease both;
 }
 
 .report__heading {
@@ -1083,12 +1088,20 @@ footer a:focus-visible {
   color: var(--muted);
 }
 
-.report__url span {
+.report__url-text {
   min-width: 0;
   margin-right: auto;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.report__url-action {
+  flex: 0 0 auto;
+  color: var(--ink);
+  font-size: 9px;
+  font-weight: 850;
+  text-transform: uppercase;
 }
 
 .report-summary {
@@ -1490,14 +1503,17 @@ footer a:focus-visible {
 
 footer {
   min-height: 106px;
+  padding: 24px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
   border-top: 1px solid var(--line);
   color: var(--ink-soft);
-  font-size: 9px;
-  letter-spacing: 0.1em;
+  font-size: 11px;
+  font-weight: 720;
+  letter-spacing: 0;
+  line-height: 1.5;
   text-transform: uppercase;
 }
 
@@ -1506,8 +1522,31 @@ footer p {
 }
 
 footer a {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+  padding: 7px 9px;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  color: var(--lime);
   font-weight: 850;
-  text-underline-offset: 4px;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+footer a:hover {
+  background: var(--lime);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.site-footer__signature {
+  color: var(--muted);
+  text-align: right;
 }
 
 @keyframes spin {
@@ -1543,6 +1582,17 @@ footer a {
   45% {
     background: var(--cyan);
     transform: scale(1.35);
+  }
+}
+
+@keyframes report-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -1834,6 +1884,15 @@ footer a {
     justify-content: center;
     flex-direction: column;
     gap: 11px;
+    font-size: 10px;
+  }
+
+  footer a {
+    margin: 6px 0 0;
+  }
+
+  .site-footer__signature {
+    text-align: left;
   }
 }
 

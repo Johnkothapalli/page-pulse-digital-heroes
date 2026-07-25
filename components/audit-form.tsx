@@ -1,6 +1,12 @@
 "use client";
 
-import { FormEvent, type ReactNode, useState } from "react";
+import {
+  FormEvent,
+  type ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import type { ApiErrorPayload, AuditReport } from "@/lib/types";
 
@@ -264,9 +270,11 @@ function Report({ report }: { report: AuditReport }) {
         href={report.url}
         target="_blank"
         rel="noreferrer"
+        aria-label={`Open audited page: ${report.url}`}
       >
         <GlobeIcon />
-        <span>{report.url}</span>
+        <span className="report__url-text">{report.url}</span>
+        <span className="report__url-action">Open page</span>
         <ArrowUpRight />
       </a>
 
@@ -409,9 +417,26 @@ function Report({ report }: { report: AuditReport }) {
 
 export function AuditForm() {
   const [url, setUrl] = useState("");
+  const resultRef = useRef<HTMLDivElement>(null);
   const [requestState, setRequestState] = useState<RequestState>({
     status: "idle",
   });
+
+  useEffect(() => {
+    if (requestState.status !== "success") {
+      return;
+    }
+
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const frame = window.requestAnimationFrame(() => {
+      resultRef.current?.scrollIntoView({
+        behavior: motionQuery.matches ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [requestState.status]);
 
   async function runAudit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -538,7 +563,12 @@ export function AuditForm() {
         )}
       </section>
 
-      <div aria-live="polite" aria-busy={isLoading}>
+      <div
+        ref={resultRef}
+        className="result-region"
+        aria-live="polite"
+        aria-busy={isLoading}
+      >
         {isLoading && <AuditProgress />}
         {requestState.status === "success" && (
           <Report report={requestState.report} />

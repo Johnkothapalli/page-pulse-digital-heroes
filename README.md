@@ -94,7 +94,7 @@ A backend that fetches arbitrary user input can become an SSRF proxy. Page Pulse
 
 ### 3. Return facts before opinions
 
-The core API reports observable values instead of inventing a single “SEO score.” The interface adds light interpretation—such as flagging multiple H1s—but labels the result as a server snapshot rather than a Lighthouse replacement. This keeps the contract useful to other clients and makes uncertainty visible.
+The core API reports observable values instead of inventing a single "SEO score." The interface adds light interpretation, such as flagging multiple H1s, but labels the result as a server snapshot rather than a Lighthouse replacement. This keeps the contract useful to other clients and makes uncertainty visible.
 
 ## Parsing assumptions
 
