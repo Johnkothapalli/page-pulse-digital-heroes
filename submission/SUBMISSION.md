@@ -12,7 +12,7 @@ The frontend, backend audit endpoint, input validation, timeout behavior, non-HT
 
 - Automated tests: `tests/`
 - Setup, API contract, and design decisions: `README.md`
-- Loom walkthrough: paste your recorded Loom link here
+- Loom walkthrough: https://www.loom.com/share/df720dbab89246c1be955bacbafae8af
 - Recording guide: `submission/LOOM_SCRIPT.md`
 - AI-use paragraph: `submission/AI_USE.md`
 

@@ -8,7 +8,7 @@ Page Pulse is a small web tool that audits a public URL and returns a clean JSON
 
 - Live application: https://page-pulse-audit.ai-coding-challenge.chatgpt.site
 - API endpoint: `POST /api/audit`
-- Loom walkthrough: add the recorded link to `submission/SUBMISSION.md`
+- Loom walkthrough: https://www.loom.com/share/df720dbab89246c1be955bacbafae8af
 
 ## Run locally
 
